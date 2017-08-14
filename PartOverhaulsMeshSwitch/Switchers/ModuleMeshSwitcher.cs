@@ -19,7 +19,7 @@ namespace Switchers
         public string meshTransforms;
     }
 
-    public class ModuleMeshSwitcher : BaseSwitcher
+    public class ModuleMeshSwitcher : BaseSwitcher, IMultipleDragCube
     {
         protected DictionaryValueList<string, MeshOption> meshOptions = new DictionaryValueList<string, MeshOption>();
         protected string[] meshTransforms = null;
@@ -128,5 +128,29 @@ namespace Switchers
 
             return nodes;
         }
+
+        #region IMultipleDragCube
+        public void AssumeDragCubePosition(string name)
+        {
+        }
+
+        public string[] GetDragCubeNames()
+        {
+            return null;
+        }
+
+        public bool IsMultipleCubesActive
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public bool UsesProceduralDragCubes()
+        {
+            return true;
+        }
+        #endregion
     }
 }
